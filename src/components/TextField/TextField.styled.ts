@@ -9,7 +9,7 @@ export const TextFieldWrapperStyled = styled.div`
 `
 
 export const TextFieldInputStyled = styled.input.attrs((props) =>
-    console.log(props)
+    props
 )`
   padding: 4px 12px;
   height: 50px;

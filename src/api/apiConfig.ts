@@ -8,8 +8,8 @@ export const apiConfig = axios.create({
 })
 
 export const apiRequest = {
-    getListUsers: async () => {
-        const response = await apiConfig.get(`users`)
+    getListUsers: async (id: string = '') => {
+        const response = await apiConfig.get(`users/${id}`)
         return response.data
     },
     register: async (data: any) => {

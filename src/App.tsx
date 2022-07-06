@@ -1,14 +1,16 @@
-import React, {useEffect} from 'react';
-import {apiRequest} from "./api/apiConfig";
-import Registration from "./pages/Registration/Registration";
+import React from 'react';
+import {userApi} from "./store/slices/userSlice";
+import UserCard from "./components/UserCard/UserCard";
 
 const App = () => {
-    useEffect(()=> {
-        apiRequest.getListUsers()
-    }, [])
+    const {data, isLoading} = userApi.useFetchAllUsersQuery('')
+
+    if (isLoading) return <h1>Идет загрузка</h1>
+
     return (
-        <div>
-           <Registration/>
+        <div style={{display: 'flex', flexWrap: 'wrap'}}>
+            {data?.data && data.data.map(user => <UserCard {...user}/>)}
+            {/*<Registration/>*/}
         </div>
     );
 };
